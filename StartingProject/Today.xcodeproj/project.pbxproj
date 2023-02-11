@@ -20,6 +20,7 @@
 		AAD059CB28ECD992004F4962 /* UIColor+Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD059CA28ECD992004F4962 /* UIColor+Today.swift */; };
 		AAD059D028ECDABB004F4962 /* ReminderListViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD059CF28ECDABB004F4962 /* ReminderListViewController+DataSource.swift */; };
 		AAD059D228ECDB3C004F4962 /* Date+Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD059D128ECDB3C004F4962 /* Date+Today.swift */; };
+		D7E3E32A29980296004EF177 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3E3282997B00E004EF177 /* ReminderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +58,6 @@
 		AAD0597B28EC8D10004F4962 = {
 			isa = PBXGroup;
 			children = (
-				D7E3E3282997B00E004EF177 /* ReminderViewController.swift */,
 				AAD059B728EC8F0F004F4962 /* README.md */,
 				AAD0598628EC8D10004F4962 /* Today */,
 				AAD059BF28EC9768004F4962 /* Configuration */,
@@ -81,8 +81,9 @@
 				AAD0598728EC8D10004F4962 /* AppDelegate.swift */,
 				AAD0598928EC8D10004F4962 /* SceneDelegate.swift */,
 				AAD059CE28ECDA7D004F4962 /* ListViewController */,
-				AAD0598D28EC8D10004F4962 /* Main.storyboard */,
+				D7E3E3292998025E004EF177 /* DetailViewController */,
 				AAD0599028EC8D12004F4962 /* Assets.xcassets */,
+				AAD0598D28EC8D10004F4962 /* Main.storyboard */,
 				AAD0599228EC8D12004F4962 /* LaunchScreen.storyboard */,
 				AAD0599528EC8D12004F4962 /* Info.plist */,
 			);
@@ -116,6 +117,14 @@
 				AA8E929828EE12880027AD15 /* ReminderListViewController+Actions.swift */,
 			);
 			path = ListViewController;
+			sourceTree = "<group>";
+		};
+		D7E3E3292998025E004EF177 /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D7E3E3282997B00E004EF177 /* ReminderViewController.swift */,
+			);
+			path = DetailViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +201,7 @@
 			files = (
 				AAD0598C28EC8D10004F4962 /* ReminderListViewController.swift in Sources */,
 				AA8E929928EE12880027AD15 /* ReminderListViewController+Actions.swift in Sources */,
+				D7E3E32A29980296004EF177 /* ReminderViewController.swift in Sources */,
 				AAD0598828EC8D10004F4962 /* AppDelegate.swift in Sources */,
 				AAD059CB28ECD992004F4962 /* UIColor+Today.swift in Sources */,
 				AA8E929728EE0E750027AD15 /* ReminderDoneButton.swift in Sources */,
