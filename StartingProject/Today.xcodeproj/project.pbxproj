@@ -40,6 +40,7 @@
 		AAD059CA28ECD992004F4962 /* UIColor+Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Today.swift"; sourceTree = "<group>"; };
 		AAD059CF28ECDABB004F4962 /* ReminderListViewController+DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReminderListViewController+DataSource.swift"; sourceTree = "<group>"; };
 		AAD059D128ECDB3C004F4962 /* Date+Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Today.swift"; sourceTree = "<group>"; };
+		D7E3E3282997B00E004EF177 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +57,7 @@
 		AAD0597B28EC8D10004F4962 = {
 			isa = PBXGroup;
 			children = (
+				D7E3E3282997B00E004EF177 /* ReminderViewController.swift */,
 				AAD059B728EC8F0F004F4962 /* README.md */,
 				AAD0598628EC8D10004F4962 /* Today */,
 				AAD059BF28EC9768004F4962 /* Configuration */,
