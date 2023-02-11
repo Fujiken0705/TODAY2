@@ -1,58 +1,45 @@
 import UIKit
 
-class ReminderViewController: UICollectionViewController {
-    private typealias DataSource = UICollectionViewDiffableDataSource<Int, Row>
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Row>
-
-    var reminder: Reminder
-    private var dataSource: DataSource!
-
-    init(reminder: Reminder) {
-        self.reminder = reminder
-        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        listConfiguration.showsSeparators = false
-        let listLayout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
-        super.init(collectionViewLayout: listLayout)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("Always initialize ReminderViewController using init(reminder:)")
-    }
+class ReminderListViewController: UICollectionViewController {
+    var dataSource: DataSource!
+    var reminders: [Reminder] = Reminder.sampleData
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let listLayout = listLayout()
+        collectionView.collectionViewLayout = listLayout
+
         let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistrationHandler)
+
         dataSource = DataSource(collectionView: collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: Row) in
+            (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: Reminder.ID) in
             return collectionView.dequeueConfiguredReusableCell(
                 using: cellRegistration, for: indexPath, item: itemIdentifier)
         }
 
         updateSnapshot()
+
+        collectionView.dataSource = dataSource
     }
 
-    func cellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, row: Row) {
-        var contentConfiguration = cell.defaultContentConfiguration()
-        contentConfiguration.text = text(for: row)
-        contentConfiguration.textProperties.font = UIFont.preferredFont(forTextStyle: row.textStyle)
-        contentConfiguration.image = row.image
-        cell.contentConfiguration = contentConfiguration
-        cell.tintColor = .todayPrimaryTint
+    override func collectionView(
+        _ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath
+    ) -> Bool {
+        let id = reminders[indexPath.item].id
+        return false
     }
 
-    func text(for row: Row) -> String? {
-        switch row {
-        case .date: return reminder.dueDate.dayText
-        case .notes: return reminder.notes
-        case .time: return reminder.dueDate.formatted(date: .omitted, time: .shortened)
-        case .title: return reminder.title
-        }
+    func pushDetailViewForReminder(withId id: Reminder.ID) {
+        let reminder = reminder(withId: id)
+        let viewController = ReminderViewController(reminder: reminder)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
-    private func updateSnapshot() {
-        var snapshot = Snapshot()
-        snapshot.appendSections([0])
-        snapshot.appendItems([Row.title, Row.date, Row.time, Row.notes], toSection: 0)
-        dataSource.apply(snapshot)
+    private func listLayout() -> UICollectionViewCompositionalLayout {
+        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .grouped)
+        listConfiguration.showsSeparators = false
+        listConfiguration.backgroundColor = .clear
+        return UICollectionViewCompositionalLayout.list(using: listConfiguration)
     }
 }
